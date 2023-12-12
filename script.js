@@ -1,30 +1,14 @@
-// getting places from APIs
-var models = [
-  {
-    url: "./assets/magnemite/scene.gltf",
-    scale: "0.5 0.5 0.5",
-    info: "Magnemite, Lv. 5, HP 10/10",
-    rotation: "0 180 0",
-  },
-  {
-    url: "./assets/articuno/scene.gltf",
-    scale: "0.2 0.2 0.2",
-    rotation: "0 180 0",
-    info: "Articuno, Lv. 80, HP 100/100",
-  },
-  {
-    url: "./assets/dragonite/scene.gltf",
-    scale: "0.08 0.08 0.08",
-    rotation: "0 180 0",
-    info: "Dragonite, Lv. 99, HP 150/150",
-  },
-  {
-    url: "./assets/pin/pin.glb",
-    scale: "0.3 0.3 0.3",
-    rotation: "0 180 0",
-    info: "目的地",
-  },
-];
+// ユーザーの入力処理
+const sign = window.prompt("緯度(latitude)を入力してください")
+console.log(sign)
+
+var arModel =
+{
+  url: "./assets/pin/pin.glb",
+  scale: "0.3 0.3 0.3",
+  rotation: "0 180 0",
+  info: "目的地",
+};
 
 window.addEventListener("load", () => {
   const model = document.getElementById("pin");
@@ -38,9 +22,9 @@ window.addEventListener("load", () => {
       `latitude: ${latitude}; longitude: ${longitude};`
     );
     model.setAttribute("scale", "15 15 15");
-    model.setAttribute("scale", models[3].scale);
-    model.setAttribute("rotation", models[3].rotation);
-    model.setAttribute("gltf-model", models[3].url);
+    model.setAttribute("scale", arModel.scale);
+    model.setAttribute("rotation", arModel.rotation);
+    model.setAttribute("gltf-model", arModel.url);
     // model.setAttribute("animation-mixer", "");
   }
 
@@ -54,6 +38,5 @@ window.addEventListener("load", () => {
     maximumAge: 0,
   };
 
-  // first get current user location
   return navigator.geolocation.getCurrentPosition(success, error, options);
 });
