@@ -22,7 +22,7 @@ var models = [
     url: "./assets/pin/pin.glb",
     scale: "0.3 0.3 0.3",
     rotation: "0 180 0",
-    info: "Magnemite, Lv. 5, HP 10/10",
+    info: "目的地",
   },
 ];
 
@@ -38,9 +38,9 @@ window.addEventListener("load", () => {
       `latitude: ${latitude}; longitude: ${longitude};`
     );
     model.setAttribute("scale", "15 15 15");
-    // model.setAttribute("scale", models[3].scale);
-    // model.setAttribute("rotation", models[3].rotation);
-    // model.setAttribute("gltf-model", models[3].url);
+    model.setAttribute("scale", models[3].scale);
+    model.setAttribute("rotation", models[3].rotation);
+    model.setAttribute("gltf-model", models[3].url);
     // model.setAttribute("animation-mixer", "");
   }
 
