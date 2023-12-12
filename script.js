@@ -15,11 +15,15 @@ window.addEventListener("load", () => {
   let latitude = 0
   let longitude = 0
   const potiosionDialog = document.getElementById("positionDialog")
+  const checkBox = potiosionDialog.querySelector("checkbox")
   const useCurrentLocationInput = document.getElementById("positionDialog")
   const latitudeInput = document.getElementById("positionDialog")
   const longitudeInput = document.getElementById("positionDialog")
 
   potiosionDialog.showModal();
+  checkBox.addEventListener("change", () => {
+    useCurrentLocation = checkBox.value
+  });
   potiosionDialog.addEventListener("close", (e) => {
     useCurrentLocation = useCurrentLocationInput.value
     latitude = latitudeInput.value
