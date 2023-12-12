@@ -11,9 +11,21 @@ var arModel = {
 
 window.addEventListener("load", () => {
   // ユーザー入力処理
+  let useCurrentLocation = false
+  let latitude = 0
+  let longitude = 0
   const potiosionDialog = document.getElementById("positionDialog")
-  potiosionDialog.showModal();
+  const useCurrentLocationInput = document.getElementById("positionDialog")
+  const latitudeInput = document.getElementById("positionDialog")
+  const longitudeInput = document.getElementById("positionDialog")
 
+  potiosionDialog.showModal();
+  potiosionDialog.addEventListener("close", (e) => {
+    useCurrentLocation = useCurrentLocationInput.value
+    latitude = latitudeInput.value
+    longitude = longitudeInput.value
+  });
+  console.log("現在地を使う？" + useCurrentLocation, "緯度" + latitude, "経度" + longitude);
 
   const model = document.getElementById("pin");
 

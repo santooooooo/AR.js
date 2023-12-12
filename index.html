@@ -19,18 +19,24 @@
     <dialog id="positionDialog">
         <form>
             <p>目的地の入力</p>
-            <label>
-                現在地を目的地として設定しますか？
-                <input type="checkbox" />
-            </label>
-            <label>
-                緯度を入力してください（現在地を使用しない場合）
-                <input type="number" />
-            </label>
-            <label>
-                経度を入力してください（現在地を使用しない場合）
-                <input type="number" />
-            </label>
+            <p>
+                <label>
+                    現在地を目的地として設定しますか？
+                    <input type="checkbox" id="useCurrentLocation" />
+                </label>
+            </p>
+            <p>
+                <label>
+                    緯度を入力してください（現在地を使用しない場合）
+                    <input type="number" id="latitude" />
+                </label>
+            </p>
+            <p>
+                <label>
+                    経度を入力してください（現在地を使用しない場合）
+                    <input type="number" id="longitude" />
+                </label>
+            </p>
             <div>
                 <button formmethod="dialog">入力完了</button>
             </div>
