@@ -1,6 +1,7 @@
 // ユーザーの入力処理
-const sign = window.prompt("緯度(latitude)を入力してください")
-console.log(sign)
+const latitude = Number(window.prompt("緯度(latitude)を入力してください", 0))
+const longitude = Number(window.prompt("経度(longtitude)を入力してください"), 0)
+console.log("緯度は" + latitude, "経度は" + longitude)
 
 var arModel =
 {
