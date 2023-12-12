@@ -2,38 +2,60 @@
 <html>
 
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>GeoAR.js demo</title>
-  <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
-  <script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
-  <script>
-    THREEx.ArToolkitContext.baseURL =
-      "https://raw.githack.com/jeromeetienne/ar.js/master/three.js/";
-  </script>
-  <link rel="stylesheet" type="text/css" href="./style.css" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>GeoAR.js demo</title>
+    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+    <script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script>
+        THREEx.ArToolkitContext.baseURL =
+            "https://raw.githack.com/jeromeetienne/ar.js/master/three.js/";
+    </script>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
 </head>
 
 <body style="margin: 0; overflow: hidden">
-  <div class="centered instructions" id="distance">Hello!</div>
-  <a-scene vr-mode-ui="enabled: false" embedded
-    arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;">
-    <a-entity id="pin"></a-entity>
-    <a-camera gps-camera rotation-reader></a-camera>
-  </a-scene>
-  <script src="./script.js"></script>
+    <dialog id="positionDialog">
+        <form>
+            <p>目的地の入力</p>
+            <label>
+                現在地を目的地として設定しますか？
+                <input type="checkbox" />
+            </label>
+            <label>
+                緯度を入力してください（現在地を使用しない場合）
+                <input type="number" />
+            </label>
+            <label>
+                経度を入力してください（現在地を使用しない場合）
+                <input type="number" />
+            </label>
+            <div>
+                <button formmethod="dialog">入力完了</button>
+            </div>
+        </form>
+    </dialog>
 
-  <script>
-    window.addEventListener("load", () => {
-      const distance = document.getElementById("distance");
-      const model = document.getElementById("pin");
-      model.addEventListener("gps-entity-place-update-positon", (event) => {
-        console.log("gps update position event occured!!");
-        distance.textContent = event.detail.distance + "m";
-      });
-    });
-  </script>
+
+    <div class="centered instructions" id="distance">Hello!</div>
+    <a-scene vr-mode-ui="enabled: false" embedded
+        arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;">
+        <a-entity id="pin"></a-entity>
+        <a-camera gps-camera rotation-reader></a-camera>
+    </a-scene>
+    <script src="./script.js"></script>
+
+    <script>
+        window.addEventListener("load", () => {
+            const distance = document.getElementById("distance");
+            const model = document.getElementById("pin");
+            model.addEventListener("gps-entity-place-update-positon", (event) => {
+                console.log("gps update position event occured!!");
+                distance.textContent = event.detail.distance + "m";
+            });
+        });
+    </script>
 </body>
 
 </html>

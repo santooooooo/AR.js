@@ -1,10 +1,8 @@
-// ユーザーの入力処理
-const latitude = Number(window.prompt("緯度(latitude)を入力してください", 0))
-const longitude = Number(window.prompt("経度(longtitude)を入力してください"), 0)
-console.log("緯度は" + latitude, "経度は" + longitude)
+// ユーザーの入力情報
+// const latitude = Number(window.prompt("緯度(latitude)を入力してください", 0))
+// const longitude = Number(window.prompt("経度(longtitude)を入力してください", 0))
 
-var arModel =
-{
+var arModel = {
   url: "./assets/pin/pin.glb",
   scale: "0.3 0.3 0.3",
   rotation: "0 180 0",
@@ -12,6 +10,11 @@ var arModel =
 };
 
 window.addEventListener("load", () => {
+  // ユーザー入力処理
+  const potiosionDialog = document.getElementById("positionDialog")
+  potiosionDialog.showModal();
+
+
   const model = document.getElementById("pin");
 
   function success(pos) {
